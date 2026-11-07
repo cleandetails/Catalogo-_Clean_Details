@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Details – Catálogo Oficial</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=Exo+2:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange-1: #F29B30;
+  --orange-2: #F27405;
+  --orange-3: #F25C05;
+  --orange-dark: #8B2500;
+  --bg-dark: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card2: #161616;
+  --gray-1: #1e1e1e;
+  --gray-2: #2a2a2a;
+  --gray-3: #3d3d3d;
+  --text-light: #f0ece8;
+  --text-muted: #888;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg-dark); color: var(--text-light); font-family: 'Exo 2', sans-serif; overflow-x: hidden; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: var(--orange-3); border-radius: 2px; }
+
+/* PROMO BANNER */
+.promo-banner {
+  background: linear-gradient(90deg, var(--orange-dark), var(--orange-3), var(--orange-dark));
+  padding: 10px 20px;
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* HERO — video vertical (móvil: pantalla completa · desktop: marco vertical al lado del texto) */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center top, #2a0d00 0%, #0a0a0a 65%);
+}
+
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(242,116,5,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,116,5,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove { 0% { transform: translateY(0); } 100% { transform: translateY(40px); } }
+
+.hero-fire {
+  position: absolute;
+  bottom: -10px; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 700px; height: 300px;
+  background: radial-gradient(ellipse at center bottom, #F25C05 0%, #F27405 20%, rgba(242,116,5,0.3) 50%, transparent 75%);
+  filter: blur(30px);
+  animation: fireFlicker 3s ease-in-out infinite alternate;
+}
+@keyframes fireFlicker {
+  0% { opacity: 0.6; transform: translateX(-50%) scaleX(0.9); }
+  100% { opacity: 1; transform: translateX(-50%) scaleX(1.05); }
+}
+
+/* Video (móvil = fondo a pantalla completa) */
+.hero-video-wrap {
+  position: absolute; top: 0; left: 0; width: 100%;
+  height: 100vh; height: 100svh;
+  z-index: 1; overflow: hidden; background: #0a0a0a;
+}
+.hero-video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.hero-video-shade {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0) 22%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.94) 100%);
+}
+
+.hero-content { position: relative; z-index: 2; text-align: center; pointer-events: none; }
+.hero-content a, .hero-info { pointer-events: auto; }
+
+.hero-main {
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  padding: 20px 20px 36px;
+}
+.hero-info { padding: 28px 20px 56px; }
+
+.hero-tagline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 400; line-height: 1.05;
+  letter-spacing: 5px;
+  color: var(--orange-1);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.9);
+}
+.hero-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-phones { display: flex; flex-direction: column; gap: 6px; align-items: center; margin-bottom: 0; }
+.hero-phone { display: flex; align-items: center; gap: 10px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--text-light); }
+.hero-phone span.icon { color: var(--orange-2); font-size: 1.1rem; }
+
+.hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+.badge { background: rgba(242,116,5,0.12); border: 1px solid rgba(242,116,5,0.3); border-radius: 4px; padding: 6px 14px; font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--orange-1); }
+
+.hero-cta { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--orange-3), var(--orange-2)); color: #fff; padding: 14px 36px; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 3px; text-decoration: none; border-radius: 4px; box-shadow: 0 0 30px rgba(242,92,5,0.5); transition: all 0.3s; cursor: pointer; border: none; }
+.hero-cta:hover { box-shadow: 0 0 50px rgba(242,92,5,0.8); transform: translateY(-2px); }
+
+/* HERO — DESKTOP / TABLET HORIZONTAL: texto a la izquierda, video vertical enmarcado a la derecha */
+@media (min-width: 900px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center; gap: 4vw;
+    min-height: 100vh; padding: 48px 6vw;
+  }
+  .hero-video-wrap {
+    position: relative; grid-column: 2; grid-row: 1;
+    width: auto; height: min(84vh, 780px); aspect-ratio: 9 / 16;
+    justify-self: center; border-radius: 20px;
+    border: 1px solid rgba(242,116,5,0.55);
+    box-shadow: 0 0 70px rgba(242,92,5,0.35), 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .hero-video-shade { background: linear-gradient(to top, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0) 30%); }
+  .hero-content { grid-column: 1; grid-row: 1; text-align: left; pointer-events: auto; }
+  .hero-main { min-height: 0; align-items: flex-start; justify-content: flex-start; padding: 0 0 32px; }
+  .hero-info { padding: 0; }
+  .hero-tagline { font-size: clamp(3rem, 5.4vw, 5.2rem); letter-spacing: 6px; margin-bottom: 28px; }
+  .hero-badges { justify-content: flex-start; }
+  .hero-phones { align-items: flex-start; }
+}
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); border-bottom: 1px solid rgba(242,116,5,0.2); backdrop-filter: blur(10px); padding: 0 20px; }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--orange-2); letter-spacing: 2px; }
+.nav-links { display: flex; gap: 4px; list-style: none; overflow-x: auto; }
+.nav-links a { display: block; padding: 8px 12px; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; white-space: nowrap; }
+.nav-links a:hover { color: var(--orange-2); }
+
+/* SECTION */
+.section { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-eyebrow { font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; letter-spacing: 4px; color: var(--orange-3); text-transform: uppercase; margin-bottom: 8px; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: 4px; line-height: 1; background: linear-gradient(135deg, var(--orange-1), var(--orange-3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
+.section-desc { font-size: 0.95rem; color: var(--text-muted); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+/* PRECIO DESDE - badge de sección */
+.price-desde-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(242,92,5,0.1);
+  border: 1px solid rgba(242,116,5,0.35);
+  border-radius: 6px;
+  padding: 10px 22px;
+  margin-top: 18px;
+  font-family: 'Rajdhani', sans-serif;
+}
+.price-desde-badge .pdb-label { font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
+.price-desde-badge .pdb-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--orange-1); letter-spacing: 2px; line-height: 1; }
+.price-desde-badge .pdb-note { font-size: 0.7rem; color: var(--text-muted); }
+
+.divider-line { width: 60px; height: 2px; background: linear-gradient(90deg, var(--orange-3), var(--orange-1)); margin: 16px auto 0; }
+
+/* PRODUCT GRID */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+/* PRODUCT CARD */
+.prod-card { background: var(--bg-card); border: 1px solid var(--gray-2); border-radius: 8px; overflow: hidden; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; }
+.prod-card:hover { transform: translateY(-6px); border-color: rgba(242,116,5,0.4); box-shadow: 0 12px 40px rgba(242,92,5,0.15); }
+.prod-card.tier-premium { border-color: rgba(242,155,48,0.3); }
+.prod-card.tier-premium:hover { box-shadow: 0 12px 40px rgba(242,155,48,0.2); }
+
+/* Tier badge */
+.tier-badge { position: absolute; top: 12px; right: 12px; z-index: 3; padding: 4px 10px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; border-radius: 3px; }
+.tier-badge.basico { background: rgba(60,60,60,0.9); color: #aaa; border: 1px solid #444; }
+.tier-badge.estandar { background: rgba(242,116,5,0.15); color: var(--orange-1); border: 1px solid rgba(242,116,5,0.4); }
+.tier-badge.premium { background: linear-gradient(135deg, rgba(242,155,48,0.3), rgba(242,92,5,0.3)); color: var(--orange-1); border: 1px solid var(--orange-1); }
+
+/* Stars */
+.stars { display: flex; gap: 2px; padding: 0 16px 0; margin-top: 12px; }
+.star { font-size: 0.85rem; }
+.star.filled { color: var(--orange-2); }
+.star.empty { color: var(--gray-3); }
+
+/* Slider */
+.card-slider { position: relative; overflow: hidden; height: 220px; background: #080808; }
+.slides { display: flex; height: 100%; transition: transform 0.5s ease; }
+.slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.slide-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); border: 1px solid rgba(242,116,5,0.3); color: var(--orange-2); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 5; }
+.slider-btn:hover { background: rgba(242,92,5,0.3); }
+.slider-btn.prev { left: 8px; }
+.slider-btn.next { right: 8px; }
+.slide-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 5; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s; }
+.dot.active { background: var(--orange-2); }
+
+/* Card body */
+.card-body { padding: 16px; }
+.card-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; color: var(--white); margin-top: 4px; }
+.card-material { font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; letter-spacing: 1px; color: var(--orange-3); text-transform: uppercase; margin-bottom: 8px; }
+.card-desc { font-size: 0.82rem; color: #888; line-height: 1.5; margin-bottom: 12px; }
+.card-features { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+.feat { display: flex; align-items: center; gap: 6px; font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; color: var(--text-light); }
+.feat-icon { color: var(--orange-2); font-size: 0.75rem; }
+
+.card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--gray-2); padding-top: 12px; gap: 10px; flex-wrap: wrap; }
+
+.guarantee-tag { background: rgba(242,116,5,0.1); border: 1px solid rgba(242,116,5,0.25); border-radius: 4px; padding: 5px 10px; font-family: 'Rajdhani', sans-serif; font-size: 0.72rem; color: var(--orange-1); text-align: center; letter-spacing: 0.5px; }
+
+.cta-btn { display: inline-block; background: linear-gradient(135deg, var(--orange-3), var(--orange-2)); color: #fff; padding: 9px 18px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; text-decoration: none; border-radius: 4px; transition: all 0.3s; white-space: nowrap; }
+.cta-btn:hover { box-shadow: 0 0 20px rgba(242,92,5,0.5); transform: translateY(-1px); }
+
+/* CATEGORY SEPARATOR */
+.cat-sep { margin: 20px 0 32px; display: flex; align-items: center; gap: 16px; }
+.cat-sep-line { flex: 1; height: 1px; background: var(--gray-2); }
+.cat-sep-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 6px; color: var(--orange-2); }
+
+/* ACCESSORIES */
+.acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.acc-card { background: var(--bg-card); border: 1px solid var(--gray-2); border-radius: 8px; padding: 20px 16px; text-align: center; transition: all 0.3s; }
+.acc-card:hover { border-color: rgba(242,116,5,0.35); transform: translateY(-4px); }
+.acc-icon { font-size: 2rem; margin-bottom: 10px; }
+.acc-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 6px; }
+.acc-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 740px; margin: 0 auto; }
+.faq-item { background: var(--bg-card); border: 1px solid var(--gray-2); border-radius: 6px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item.open { border-color: rgba(242,116,5,0.35); }
+.faq-q { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; cursor: pointer; gap: 10px; }
+.faq-q-text { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--text-light); }
+.faq-icon { color: var(--orange-2); font-size: 1.1rem; transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 18px; font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 18px 14px; }
+
+/* TESTIMONIALS */
+.test-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.test-card { background: var(--bg-card); border: 1px solid var(--gray-2); border-radius: 8px; padding: 20px; position: relative; }
+.test-quote-mark { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(242,116,5,0.15); line-height: 1; margin-bottom: 6px; }
+.test-text { font-size: 0.85rem; color: #aaa; line-height: 1.6; margin-bottom: 14px; }
+.test-footer { display: flex; align-items: center; gap: 10px; }
+.test-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--orange-3), var(--orange-dark)); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: #fff; flex-shrink: 0; }
+.test-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--white); }
+.test-vehicle { font-size: 0.72rem; color: var(--orange-2); }
+.test-stars { display: flex; gap: 2px; margin-top: 2px; }
+.test-stars span { font-size: 0.7rem; color: var(--orange-2); }
+
+/* CONTACT BAR */
+.contact-bar { background: linear-gradient(135deg, #100800, #1a0a00); border-top: 1px solid rgba(242,116,5,0.2); border-bottom: 1px solid rgba(242,116,5,0.2); padding: 40px 20px; text-align: center; }
+.contact-bar-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); letter-spacing: 4px; color: var(--orange-1); margin-bottom: 8px; }
+.contact-bar-sub { font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 24px; }
+.contact-phones { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.contact-phone-btn { display: flex; align-items: center; gap: 8px; background: rgba(242,116,5,0.1); border: 1px solid rgba(242,116,5,0.3); color: var(--text-light); padding: 12px 20px; border-radius: 6px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.3s; }
+.contact-phone-btn:hover { background: rgba(242,116,5,0.25); transform: translateY(-2px); }
+.contact-phone-btn span { color: var(--orange-2); }
+
+/* FOOTER */
+footer { background: #050505; border-top: 1px solid var(--gray-2); padding: 30px 20px; text-align: center; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--orange-2); letter-spacing: 3px; margin-bottom: 6px; }
+.footer-services { font-family: 'Rajdhani', sans-serif; letter-spacing: 3px; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
+.footer-copy { margin-top: 14px; font-size: 0.72rem; color: #444; }
+
+/* GLOW + MISC */
+.glow-sep { height: 1px; background: linear-gradient(90deg, transparent, var(--orange-3), transparent); margin: 0; opacity: 0.4; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* WA FLOAT */
+.wa-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; z-index: 999; transition: transform 0.3s; }
+.wa-float:hover { transform: scale(1.1); }
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .nav-links a { font-size: 0.75rem; padding: 8px 8px; }
+  .acc-grid { grid-template-columns: repeat(2, 1fr); }
+  .test-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Promo Banner -->
+<div class="promo-banner">
+  🔥 FORROS DESDE $700.000 &nbsp;·&nbsp; TAPICERÍA DESDE $1.000.000 &nbsp;·&nbsp; MATERIALES PREMIUM &nbsp;·&nbsp; GARANTÍA HASTA 3 AÑOS &nbsp;·&nbsp; 313 833 2502
+</div>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-fire"></div>
+
+  <!-- VIDEO DE PORTADA (vertical 9:16 / 9:19). Archivos: portada.mp4 y portada-poster.jpg junto a este index.html -->
+  <div class="hero-video-wrap">
+    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="portada-poster.jpg" aria-label="Video de Clean Details">
+      <source src="portada.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-shade"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-main">
+      <h1 class="hero-tagline">Tu Vehículo.<br>Tu Identidad.</h1>
+      <a href="#forros" class="hero-cta">▶ VER CATÁLOGO</a>
+    </div>
+
+    <div class="hero-info">
+      <p class="hero-sub">Tapicería automotriz · mantenimiento técnico · polarizado · Detailing · servicio de escáner · pulido y restauración de farolas · venta de repuestos bajo pedido · tapicería para mobiliario · accesorios</p>
+
+      <div class="hero-badges">
+        <span class="badge">✦ Garantía hasta 3 años</span>
+        <span class="badge">✦ Materiales Premium</span>
+        <span class="badge">✦ Acabado Profesional</span>
+      </div>
+
+      <div class="hero-phones">
+        <div class="hero-phone"><span class="icon">📞</span> 313 833 2502</div>
+        <div class="hero-phone"><span class="icon">📞</span> 310 581 9598</div>
+        <div class="hero-phone"><span class="icon">📞</span> 311 528 7639</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">CD</span>
+    <ul class="nav-links">
+      <li><a href="#forros">Forros</a></li>
+      <li><a href="#tapiceria">Tapicería</a></li>
+      <li><a href="#timon">Timón</a></li>
+      <li><a href="#polarizados">Polarizados</a></li>
+      <li><a href="#accesorios">Accesorios</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#testimonios">Reseñas</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="glow-sep"></div>
+
+<!-- ===== FORROS ===== -->
+<section class="section" id="forros">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Producto 01</p>
+    <h2 class="section-title">FORROS PARA CARRO</h2>
+    <p class="section-desc">Protección y estilo para tus sillas. Fabricados con materiales de alto tráfico, costura reforzada y ajuste perfecto. Solo tapizado de sillas — delanteras y traseras.</p>
+    <div class="price-desde-badge">
+      <div>
+        <div class="pdb-label">Forros desde</div>
+        <div class="pdb-val">$700.000</div>
+        <div class="pdb-note">*Varía según modelo y nivel</div>
+      </div>
+    </div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- BÁSICO -->
+  <div class="cat-sep reveal">
+    <div class="cat-sep-line"></div>
+    <span class="cat-sep-label">BÁSICO</span>
+    <div class="cat-sep-line"></div>
+  </div>
+  <div class="product-grid">
+    <div class="prod-card reveal">
+      <div class="tier-badge basico">Básico</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-forro-basico">
+          <!-- Slide 1: Vista frontal silla con forro liso -->
+          <div class="slide">
+            <img class="slide-img" src="forro_basico1.jpeg" alt="forro_basico1">
+          </div>
+          <!-- Slide 2: Textura material -->
+          <div class="slide">
+    <img class="slide-img" src="forro_basico2.jpeg" alt="forro_basico2">
+</div>
+         
+  </div>
+        <button class="slider-btn prev" onclick="slide('forro-basico',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('forro-basico',1)">›</button>
+        <div class="slide-dots" id="dots-forro-basico">
+          <div class="dot active" onclick="goSlide('forro-basico',0)"></div>
+          <div class="dot" onclick="goSlide('forro-basico',1)"></div>
+          
+    
+        </div>
+      </div>
+      <div class="stars">
+        <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+        <span class="star empty">★</span><span class="star empty">★</span>
+      </div>
+      <div class="card-body">
+        <div class="card-material">Vinilcuero de Alto Tráfico</div>
+        <div class="card-name">FORRO BÁSICO</div>
+        <div class="card-desc">Protección completa para las sillas de tu vehículo. Vinilcuero resistente, fácil de limpiar y ajuste estándar. Ideal para uso diario y vehículos de trabajo.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Vinilcuero de alto tráfico</div>
+          <div class="feat"><span class="feat-icon">✔</span> Sillas delanteras y traseras</div>
+          <div class="feat"><span class="feat-icon">✔</span> Fácil limpieza y mantenimiento</div>
+          <div class="feat"><span class="feat-icon">✔</span> Amplia variedad de colores</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 2 años<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20el%20Forro%20Básico" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTÁNDAR -->
+  <div class="cat-sep reveal" style="margin-top:40px">
+    <div class="cat-sep-line"></div>
+    <span class="cat-sep-label">ESTÁNDAR</span>
+    <div class="cat-sep-line"></div>
+  </div>
+  <div class="product-grid">
+    <div class="prod-card reveal">
+      <div class="tier-badge estandar">Estándar</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-forro-estandar">
+          <!-- Slide 1: Silla con patrón diamante -->
+          <div class="slide">
+            <img class="slide-img" src="forro_estandar1.jpeg" alt="forro_estandar1">
+          </div>
+          <!-- Slide 2: Detalle costura -->
+          <div class="slide">
+            <img class="slide-img" src="forro_estandar2.jpeg" alt="forro_estandar2">
+          </div>
+        
+        </div>
+        <button class="slider-btn prev" onclick="slide('forro-estandar',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('forro-estandar',1)">›</button>
+        <div class="slide-dots" id="dots-forro-estandar">
+          <div class="dot active" onclick="goSlide('forro-estandar',0)"></div>
+          <div class="dot" onclick="goSlide('forro-estandar',1)"></div>
+
+        </div>
+      </div>
+      <div class="stars">
+        <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span>
+      </div>
+      <div class="card-body">
+        <div class="card-material">Vinilcuero Premium · Diseños con Mayor Detalle</div>
+        <div class="card-name">FORRO ESTÁNDAR</div>
+        <div class="card-desc">Un nivel superior en acabados y diseño. Mayor variedad de estilos y combinaciones que el básico, con materiales más resistentes y mejores terminaciones.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Vinilcuero premium de mayor grosor</div>
+          <div class="feat"><span class="feat-icon">✔</span> Diseños con mejor acabado visual</div>
+          <div class="feat"><span class="feat-icon">✔</span> Opciones de combinación de colores</div>
+          <div class="feat"><span class="feat-icon">✔</span> Cobertura total de sillas</div>
+          <div class="feat"><span class="feat-icon">✔</span> Mayor resistencia al desgaste</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 2 años<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20el%20Forro%20Estándar" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="cat-sep reveal" style="margin-top:40px">
+    <div class="cat-sep-line"></div>
+    <span class="cat-sep-label">PREMIUM</span>
+    <div class="cat-sep-line"></div>
+  </div>
+  <div class="product-grid">
+    <div class="prod-card tier-premium reveal">
+      <div class="tier-badge premium">⭐ Premium</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-forro-premium">
+          <!-- Slide 1: Silla cuero perforado premium -->
+          <div class="slide">
+            <img class="slide-img" src="forro_premium1.jpeg" alt="forro_premium1">
+          </div>
+          <!-- Slide 2: Costura francesa detalle -->
+          <div class="slide">
+            <img class="slide-img" src="forro_premium2.jpeg" alt="forro_premium2">
+          </div>
+         <div class="slide">
+            <img class="slide-img" src="forro_premium3.jpeg" alt="forro_premium3">
+          </div>
+        </div>
+        <button class="slider-btn prev" onclick="slide('forro-premium',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('forro-premium',1)">›</button>
+        <div class="slide-dots" id="dots-forro-premium">
+          <div class="dot active" onclick="goSlide('forro-premium',0)"></div>
+          <div class="dot" onclick="goSlide('forro-premium',1)"></div>
+          <div class="dot" onclick="goSlide('forro-premium',2)"></div>
+         
+        </div>
+      </div>
+      <div class="stars">
+        <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+      </div>
+      <div class="card-body">
+        <div class="card-material">Cuero Perforado · Máxima Calidad de Acabados</div>
+        <div class="card-name">FORRO PREMIUM</div>
+        <div class="card-desc">El nivel más alto en forros. Materiales exclusivos, acabados superiores y personalización total. Los diseños varían según lo que el cliente desea lograr — cada trabajo es único.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Cuero perforado de alta gama</div>
+          <div class="feat"><span class="feat-icon">✔</span> Costura francesa tripleada</div>
+          <div class="feat"><span class="feat-icon">✔</span> Diseño personalizado por el cliente</div>
+          <div class="feat"><span class="feat-icon">✔</span> Moldaje exacto por modelo</div>
+          <div class="feat"><span class="feat-icon">✔</span> Acabados de nivel showroom</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 2 Años<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20el%20Forro%20Premium" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- ===== TAPICERÍA ===== -->
+<section class="section" id="tapiceria">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Producto 02</p>
+    <h2 class="section-title">TAPICERÍA</h2>
+    <p class="section-desc">Renovación del tapizado de las sillas de tu vehículo en vinilcuero de alto tráfico. Tres niveles de calidad con acabados progresivamente superiores — cada trabajo es único.</p>
+    <div class="price-desde-badge">
+      <div>
+        <div class="pdb-label">Tapicería vinilcuero alto tráfico desde</div>
+        <div class="pdb-val">$1.000.000</div>
+        <div class="pdb-note">*Varía según modelo y nivel</div>
+      </div>
+    </div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- BÁSICO -->
+  <div class="cat-sep reveal"><div class="cat-sep-line"></div><span class="cat-sep-label">BÁSICO</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card reveal">
+      <div class="tier-badge basico">Básico</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-tap-basico">
+          <!-- Slide 1 -->
+          <div class="slide">
+            <img class="slide-img" src="tapiceria_basica1.jpeg" alt="tapiceria_basica1">
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide">
+             <img class="slide-img" src="tapiceria_basica2.jpeg" alt="tapiceria_basica2">
+          </div>
+          
+        </div>
+        <button class="slider-btn prev" onclick="slide('tap-basico',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('tap-basico',1)">›</button>
+        <div class="slide-dots" id="dots-tap-basico">
+          <div class="dot active" onclick="goSlide('tap-basico',0)"></div>
+
+        </div>
+      </div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Vinilcuero Alto Tráfico</div>
+        <div class="card-name">TAPICERÍA BÁSICA</div>
+        <div class="card-desc">Renovación del tapizado de las sillas con vinilcuero de alto tráfico. Acabado limpio, funcional y duradero — ideal para vehículos de trabajo que necesitan renovar su interior.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Sillas delanteras y traseras</div>
+          <div class="feat"><span class="feat-icon">✔</span> Vinilcuero alto tráfico</div>
+          <div class="feat"><span class="feat-icon">✔</span> Colores a elección del cliente</div>
+          <div class="feat"><span class="feat-icon">✔</span> Relleno incluido si se requiere</div>
+          <div class="feat"><span class="feat-icon">✔</span> Recuperación de espuma de asientos</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 2 años<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20la%20Tapicería%20Básica" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTÁNDAR -->
+  <div class="cat-sep reveal" style="margin-top:40px"><div class="cat-sep-line"></div><span class="cat-sep-label">ESTÁNDAR</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card reveal">
+      <div class="tier-badge estandar">Estándar</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-tap-estandar">
+          <!-- Slide 1 -->
+          <div class="slide">
+           <img class="slide-img" src="tapiceria_estandar2.jpeg" alt="tapiceria_estandar2">
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide">
+            <img class="slide-img" src="tapiceria_estandar1.jpeg" alt="tapiceria_estandar1">
+          </div>
+         
+        </div>
+        <button class="slider-btn prev" onclick="slide('tap-estandar',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('tap-estandar',1)">›</button>
+        <div class="slide-dots" id="dots-tap-estandar">
+          <div class="dot active" onclick="goSlide('tap-estandar',0)"></div>
+          <div class="dot" onclick="goSlide('tap-estandar',1)"></div>
+      
+        </div>
+      </div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Vinilcuero Premium · Mejor Acabado</div>
+        <div class="card-name">TAPICERÍA ESTÁNDAR</div>
+        <div class="card-desc">Un nivel superior al básico en materiales y detalle de diseño. Acabados más cuidados y mayor variedad de opciones visuales para darle identidad a tu interior.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Sillas delanteras y traseras</div>
+          <div class="feat"><span class="feat-icon">✔</span> Material de mayor calidad y grosor</div>
+          <div class="feat"><span class="feat-icon">✔</span> Diseños con mayor detalle visual</div>
+          <div class="feat"><span class="feat-icon">✔</span> Combinación de colores disponible</div>
+          <div class="feat"><span class="feat-icon">✔</span> Mayor resistencia y durabilidad</div>
+          <div class="feat"><span class="feat-icon">✔</span> Recuperación de espuma de asientos</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 2 Años<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20la%20Tapicería%20Estándar" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="cat-sep reveal" style="margin-top:40px"><div class="cat-sep-line"></div><span class="cat-sep-label">PREMIUM</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card tier-premium reveal">
+      <div class="tier-badge premium">⭐ Premium</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-tap-premium">
+          <!-- Slide 1 -->
+          <div class="slide">
+           <img class="slide-img" src="tapiceria_premium1.jpeg" alt="tapiceria_premium1">
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide">
+            <img class="slide-img" src="tapiceria_premium2.jpeg" alt="tapiceria_premium2">
+          </div>
+          
+        </div>
+        <button class="slider-btn prev" onclick="slide('tap-premium',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('tap-premium',1)">›</button>
+        <div class="slide-dots" id="dots-tap-premium">
+          <div class="dot active" onclick="goSlide('tap-premium',0)"></div>
+          <div class="dot" onclick="goSlide('tap-premium',1)"></div>
+        
+        </div>
+      </div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Cuero / Material Exclusivo · Acabado Showroom</div>
+        <div class="card-name">TAPICERÍA PREMIUM</div>
+        <div class="card-desc">El nivel más alto en tapizado de sillas. Materiales exclusivos, personalización total del diseño y acabados impecables. Cada trabajo es único según la visión del cliente.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Sillas delanteras y traseras</div>
+          <div class="feat"><span class="feat-icon">✔</span> Materiales exclusivos de alta gama</div>
+          <div class="feat"><span class="feat-icon">✔</span> Diseño totalmente personalizado</div>
+          <div class="feat"><span class="feat-icon">✔</span> Bordado o grabado personalizado</div>
+          <div class="feat"><span class="feat-icon">✔</span> Acabado de nivel showroom</div>
+          <div class="feat"><span class="feat-icon">✔</span> Recuperación de espuma de asientos</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 2 Años<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20la%20Tapicería%20Premium" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+<!-- ===== FORRADO DE TIMÓN ===== -->
+<section class="section" id="timon">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Producto 03</p>
+    <h2 class="section-title">FORRADO DE TIMÓN</h2>
+    <p class="section-desc">Forrado de timón en vinilcuero de alto tráfico. Tres niveles de calidad con acabados progresivamente superiores — cada trabajo es único.</p>
+    <div class="price-desde-badge">
+      <div>
+        <div class="pdb-label"> Tejido a mano</div>
+        <div class="pdb-val">$100.000</div>
+        <div class="pdb-note">*Varía según modelo y nivel</div>
+      </div>
+    </div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- BÁSICO -->
+  <div class="cat-sep reveal"><div class="cat-sep-line"></div><span class="cat-sep-label">BÁSICO</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card reveal">
+      <div class="tier-badge basico">Básico</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-timon-basico">
+          <!-- Slide 1 -->
+          <div class="slide">
+            <img class="slide-img" src="forrado_timon.jpeg" alt="forrado_timon">
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide">
+             <img class="slide-img" src="forrado_timonbasico2.jpeg" alt="forrado_timonbasico2">
+          </div>
+          
+        </div>
+        <button class="slider-btn prev" onclick="slide('timon-basico',-1)">‹</button>
+    <button class="slider-btn next" onclick="slide('timon-basico',1)">›</button>
+
+    <div class="slide-dots" id="dots-timon-basico">
+        <div class="dot active" onclick="goSlide('timon-basico',0)"></div>
+        <div class="dot" onclick="goSlide('timon-basico',1)"></div>         
+        </div>
+      </div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Vinilcuero Alto Tráfico</div>
+        <div class="card-name">FORRADO DE TIMÓN BÁSICO</div>
+        <div class="card-desc">Con vinilcuero de alto tráfico. Acabado limpio, funcional y duradero — ideal para vehículos de trabajo que necesitan renovar su interior.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Materiales exclusivos de alta gama</div>
+          <div class="feat"><span class="feat-icon">✔</span> Diseño totalmente personalizado</div>
+          <div class="feat"><span class="feat-icon">✔</span> Acabado de nivel showroom</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 6 meses<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20la%20Tapicería%20Básica" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="cat-sep reveal" style="margin-top:40px"><div class="cat-sep-line"></div><span class="cat-sep-label">PREMIUM</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card tier-premium reveal">
+      <div class="tier-badge premium">⭐ Premium</div>
+      <div class="card-slider">
+    <div class="slides" id="slides-timon-premium">
+
+        <!-- Slide 1 -->
+        <div class="slide">
+            <img class="slide-img" src="forrado_timondeportivo1.jpeg" alt="forrado_timondeportivo1">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img class="slide-img" src="forrado_timondeportivo2.jpeg" alt="forrado_timondeportivo2">
+        </div>
+
+    </div>
+
+    <button class="slider-btn prev" onclick="slide('timon-premium',-1)">‹</button>
+    <button class="slider-btn next" onclick="slide('timon-premium',1)">›</button>
+
+    <div class="slide-dots" id="dots-timon-premium">
+        <div class="dot active" onclick="goSlide('timon-premium',0)"></div>
+        <div class="dot" onclick="goSlide('timon-premium',1)"></div>
+    </div>
+</div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Cuero / Material Exclusivo · Acabado Showroom</div>
+        <div class="card-name">FORRADO DE TIMÓN PREMIUM</div>
+        <div class="card-desc">El nivel más alto en tapizado. Materiales exclusivos, personalización total del diseño y acabados impecables. Cada trabajo es único según la visión del cliente.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Materiales exclusivos de alta gama</div>
+          <div class="feat"><span class="feat-icon">✔</span> Diseño totalmente personalizado</div>
+          <div class="feat"><span class="feat-icon">✔</span> Acabado de nivel showroom</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 6 meses<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20la%20Tapicería%20Premium" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+<!-- ===== POLARIZADOS ===== -->
+<section class="section" id="polarizados">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Producto 04</p>
+    <h2 class="section-title">POLARIZADOS</h2>
+    <p class="section-desc">Película solar instalada profesionalmente. Bloqueo UV, privacidad, reducción de calor y estética. Tres niveles con garantías hasta 3 años.</p>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- BÁSICO -->
+  <div class="cat-sep reveal"><div class="cat-sep-line"></div><span class="cat-sep-label">BÁSICO</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card reveal">
+      <div class="tier-badge basico">Básico</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-pol-basico">
+          <div class="slide"><img class="slide-img" src="polarizadobasico.png" alt="polarizadobasico"></div>
+          <div class="slide"><img class="slide-img" src="polarizadobasico2.png" alt="polarizadobasico2"></div>
+        </div>
+        <button class="slider-btn prev" onclick="slide('pol-basico',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('pol-basico',1)">›</button>
+        <div class="slide-dots" id="dots-pol-basico">
+          <div class="dot active" onclick="goSlide('pol-basico',0)"></div><div class="dot" onclick="goSlide('pol-basico',1)"></div>
+        </div>
+      </div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Película Solar Estándar</div>
+        <div class="card-name">POLARIZADO BÁSICO</div>
+        <div class="card-desc">Película de entrada diseñada para mejorar la apariencia del vehículo y proporcionar un tono oscuro uniforme en los vidrios. Una opción económica para quienes buscan un acabado estético y mayor confort visual.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Oscuridad uniforme</div>
+          <div class="feat"><span class="feat-icon">✔</span> Mejora la apariencia del vehículo</div>
+          <div class="feat"><span class="feat-icon">✔</span> Acabado profesional</div>
+          <div class="feat"><span class="feat-icon">✔</span> Opción económica</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 6 Meses<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20el%20Polarizado%20Básico" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NANOCARBONO -->
+  <div class="cat-sep reveal" style="margin-top:40px"><div class="cat-sep-line"></div><span class="cat-sep-label">ESTÁNDAR – NANOCARBONO</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card reveal">
+      <div class="tier-badge estandar">Estándar</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-pol-nano">
+          <div class="slide"><img class="slide-img" src="polarizado_nanocarbon1.jpeg" alt="polarizado_nanocarbon1"></div>
+          <div class="slide"><img class="slide-img" src="polarizado_nanocarbon2.jpeg" alt="polarizado_nanocarbon2"></div>
+          <div class="slide"><img class="slide-img" src="polarizado_nanocarbon3.jpeg" alt="polarizado_nanocarbon3"></div>
+        </div>
+        <button class="slider-btn prev" onclick="slide('pol-nano',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('pol-nano',1)">›</button>
+        <div class="slide-dots" id="dots-pol-nano">
+          <div class="dot active" onclick="goSlide('pol-nano',0)"></div><div class="dot" onclick="goSlide('pol-nano',1)"></div><div class="dot" onclick="goSlide('pol-nano',2)"></div>
+        </div>
+      </div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Película Nanocarbono · Sin Metal</div>
+        <div class="card-name">POLARIZADO NANOCARBONO</div>
+        <div class="card-desc">Tecnología sin partículas metálicas: mayor rechazo de calor y sin interferencia con GPS, celular ni elevavidrios eléctrico.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Bloqueo UV 99%</div>
+          <div class="feat"><span class="feat-icon">✔</span> Rechazo de calor hasta 55%</div>
+          <div class="feat"><span class="feat-icon">✔</span> No interfiere GPS ni señal</div>
+          <div class="feat"><span class="feat-icon">✔</span> Anti-deslumbramiento</div>
+          <div class="feat"><span class="feat-icon">✔</span> Más oscuro y uniforme</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 1 Año<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20el%20Polarizado%20Nanocarbono" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NANOCERAMICO -->
+  <div class="cat-sep reveal" style="margin-top:40px"><div class="cat-sep-line"></div><span class="cat-sep-label">PREMIUM – NANOCERAMICO</span><div class="cat-sep-line"></div></div>
+  <div class="product-grid">
+    <div class="prod-card tier-premium reveal">
+      <div class="tier-badge premium">⭐ Premium</div>
+      <div class="card-slider">
+        <div class="slides" id="slides-pol-ceramic">
+          <div class="slide"><img class="slide-img" src="polarizado_nanoceramico1.jpeg" alt="polarizado_nanoceramico1"></div>
+          <div class="slide"><img class="slide-img" src="polarizado_nanoceramico2.jpeg" alt="polarizado_nanoceramico2"></div>
+          <div class="slide"><img class="slide-img" src="polarizado_nanoceramico3.jpeg" alt="polarizado_nanoceramico3"></div>
+        </div>
+        <button class="slider-btn prev" onclick="slide('pol-ceramic',-1)">‹</button>
+        <button class="slider-btn next" onclick="slide('pol-ceramic',1)">›</button>
+        <div class="slide-dots" id="dots-pol-ceramic">
+          <div class="dot active" onclick="goSlide('pol-ceramic',0)"></div><div class="dot" onclick="goSlide('pol-ceramic',1)"></div><div class="dot" onclick="goSlide('pol-ceramic',2)"></div>
+        </div>
+      </div>
+      <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div>
+      <div class="card-body">
+        <div class="card-material">Película Nanocerámica · Máxima Tecnología</div>
+        <div class="card-name">POLARIZADO NANOCERAMICO</div>
+        <div class="card-desc">El mejor polarizado del mercado. Partículas cerámicas que rechazan hasta el 70% del calor sin oscurecer la visibilidad. No se decolora, no interfiere con ninguna señal.</div>
+        <div class="card-features">
+          <div class="feat"><span class="feat-icon">✔</span> Bloqueo UV 99.9%</div>
+          <div class="feat"><span class="feat-icon">✔</span> Rechazo de calor hasta 70%</div>
+          <div class="feat"><span class="feat-icon">✔</span> Visibilidad nocturna superior</div>
+          <div class="feat"><span class="feat-icon">✔</span> No interfiere ninguna señal</div>
+          <div class="feat"><span class="feat-icon">✔</span> No se decolora ni burbujea</div>
+        </div>
+        <div class="card-footer">
+          <div class="guarantee-tag">🛡 3 Años<br>Garantía</div>
+          <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20el%20Polarizado%20Nanoceramico" class="cta-btn" target="_blank">COTIZAR</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- ===== ACCESORIOS ===== -->
+<section class="section" id="accesorios">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Servicios adicionales</p>
+    <h2 class="section-title">ACCESORIOS Y ELÉCTRICOS</h2>
+    <p class="section-desc">Completa la transformación de tu vehículo con nuestros servicios de accesorios y electricidad automotriz.</p>
+    <div class="divider-line"></div>
+  </div>
+  <div class="acc-grid">
+    <div class="acc-card reveal"><div class="acc-icon">🔊</div><div class="acc-title">Sonido Premium</div><div class="acc-desc">Instalación de sistemas de audio, amplificadores, subwoofers y multimedia.</div></div>
+    <div class="acc-card reveal"><div class="acc-icon">💡</div><div class="acc-title">LED Ambiental</div><div class="acc-desc">Iluminación LED interior RGB y tiras ambientales para un interior único.</div></div>
+    <div class="acc-card reveal"><div class="acc-icon">📷</div><div class="acc-title">Cámaras & Pantallas</div><div class="acc-desc">Cámara de reversa, cámaras 360°, pantallas táctiles y navegación GPS.</div></div>
+    <div class="acc-card reveal"><div class="acc-icon">🚗</div><div class="acc-title">Accesorios Lujo</div><div class="acc-desc">Detalles estéticos de lujo  para personalizar tu auto.</div></div>
+    <div class="acc-card reveal"><div class="acc-icon">🔌</div><div class="acc-title">Eléctricos Auto</div><div class="acc-desc">Instalación eléctrica, alarmas, seguros eléctricos, sensores de parqueo y más.</div></div>
+    <div class="acc-card reveal"><div class="acc-icon">🛡</div><div class="acc-title">Alarmas & Seguridad</div><div class="acc-desc">Sistemas de alarma, bloqueo de motor y protección antirobos.</div></div>
+    <div class="acc-card reveal"><div class="acc-icon">🎮</div><div class="acc-title">Mandos & Controles</div><div class="acc-desc">Elevavidrios eléctricos y mandos avanzados.</div></div>
+    
+  </div>
+  <div style="text-align:center; margin-top:32px">
+    <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20un%20accesorio%20o%20servicio%20eléctrico" class="hero-cta" style="font-size:1rem" target="_blank">📲 CONSULTAR ACCESORIOS</a>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- ===== GARANTÍAS ===== -->
+<section class="section">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Compromiso Clean Details</p>
+    <h2 class="section-title">TABLA DE GARANTÍAS</h2>
+    <div class="divider-line"></div>
+  </div>
+  <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-family:'Rajdhani',sans-serif;font-size:0.9rem;" class="reveal">
+      <thead>
+        <tr style="background:rgba(242,116,5,0.15);border-bottom:2px solid var(--orange-3)">
+          <th style="padding:14px 16px;text-align:left;color:var(--orange-1);letter-spacing:2px;text-transform:uppercase;">Producto</th>
+          <th style="padding:14px 16px;text-align:center;color:#888;letter-spacing:2px;">BÁSICO</th>
+          <th style="padding:14px 16px;text-align:center;color:var(--orange-1);letter-spacing:2px;">ESTÁNDAR</th>
+          <th style="padding:14px 16px;text-align:center;color:var(--orange-1);letter-spacing:2px;">PREMIUM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--gray-2)">
+          <td style="padding:12px 16px;color:var(--text-light)">Forros</td>
+          <td style="padding:12px 16px;text-align:center;color:#888">2 años</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--orange-1)">2 años</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--orange-1);font-weight:700">2 años</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--gray-2);background:rgba(255,255,255,0.02)">
+          <td style="padding:12px 16px;color:var(--text-light)">Tapicería</td>
+          <td style="padding:12px 16px;text-align:center;color:#888">2 años</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--orange-1)">2 años</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--orange-1);font-weight:700">2 años</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--gray-2)">
+          <td style="padding:12px 16px;color:var(--text-light)">Polarizado Básico</td>
+          <td style="padding:12px 16px;text-align:center;color:#888">6 meses</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--text-muted)">–</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--text-muted)">–</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--gray-2);background:rgba(255,255,255,0.02)">
+          <td style="padding:12px 16px;color:var(--text-light)">Polarizado Nanocarbono</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--text-muted)">–</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--orange-1)">1 año</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--text-muted)">–</td>
+        </tr>
+        <tr>
+          <td style="padding:12px 16px;color:var(--text-light)">Polarizado Nanoceramico</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--text-muted)">–</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--text-muted)">–</td>
+          <td style="padding:12px 16px;text-align:center;color:var(--orange-1);font-weight:700">3 años ⭐</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Resolvemos tus dudas</p>
+    <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
+    <div class="divider-line"></div>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">¿Cuánto tiempo tarda la instalación de forros o tapicería?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Los forros se instalan en promedio 4–6 horas. El tapizado de sillas puede tomar entre 1 y 3 días hábiles dependiendo del nivel y el vehículo.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">¿El tapizado incluye techo, piso o puertas?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">El servicio de tapizado y forros cubre exclusivamente las sillas del vehículo (delanteras y traseras). Si necesitas intervención en techo, piso o puertas, consúltanos para cotizarlo por separado.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">¿Los diseños son estándar o puedo personalizarlos?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Cada nivel ofrece mayor posibilidad de personalización. En el básico hay colores sólidos; en el estándar hay más combinaciones y detalles; en el premium el diseño es completamente a la medida del cliente — cada trabajo resulta único.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">¿Qué cubre la garantía?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">La garantía cubre defectos de fabricación, costuras, despegue de materiales y decoloración prematura bajo uso normal. No cubre daños por accidentes, mal uso o modificaciones por terceros.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">¿El polarizado interfiere con el GPS o el celular?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">El Nanocarbono y Nanoceramico están diseñados específicamente para no interferir con ninguna señal electrónica. El básico estándar generalmente tampoco interfiere.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">¿Trabajan con todo tipo de vehículos?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Trabajamos con carros, camionetas, SUVs, taxis y vehículos de carga liviana. El precio varía según el modelo, el tamaño y la cantidad de sillas del vehículo.</div>
+    </div>
+    <div class="faq-item reveal" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">¿Tienen muestras de materiales para elegir?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Sí. En nuestro taller contamos con muestrarios de vinilcuero, cuero, telas y películas polarizadas para que puedas ver y tocar los materiales antes de decidir.</div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- ===== TESTIMONIOS ===== -->
+<section class="section" id="testimonios">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Lo que dicen nuestros clientes</p>
+    <h2 class="section-title">TESTIMONIOS</h2>
+    <div class="divider-line"></div>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Mandé a hacer los forros premium para mi Mazda CX-5 y quedaron espectaculares. La costura es perfecta y el ajuste como si fuera de fábrica. Súper recomendados.</p>
+      <div class="test-footer"><div class="test-avatar">JC</div><div><div class="test-name">Juan Camilo R.</div><div class="test-vehicle">Mazda CX-5 · Forro Premium</div><div class="test-stars"><span>★★★★★</span></div></div></div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Hice el polarizado nanoceramico en mi Nissan Sentra. El calor se redujo bastante, la visibilidad de noche es excelente y ya van 2 años sin burbujas ni decoloración.</p>
+      <div class="test-footer"><div class="test-avatar">AM</div><div><div class="test-name">Alejandra M.</div><div class="test-vehicle">Nissan Sentra · Polarizado Nanoceramico</div><div class="test-stars"><span>★★★★★</span></div></div></div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">La tapicería estándar en mi taxi quedó impecable. Material resistente, bonito y fácil de limpiar. Los clientes siempre me preguntan por el tapizado.</p>
+      <div class="test-footer"><div class="test-avatar">RP</div><div><div class="test-name">Roberto P.</div><div class="test-vehicle">Chevrolet Spark · Tapicería Estándar</div><div class="test-stars"><span>★★★★★</span></div></div></div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Les instalaron el sistema de sonido completo con amplificador y subwoofer en mi camioneta. El trabajo eléctrico quedó impecable y sin cables sueltos. Muy profesionales.</p>
+      <div class="test-footer"><div class="test-avatar">DG</div><div><div class="test-name">Diego G.</div><div class="test-vehicle">Toyota Hilux · Sonido + Eléctricos</div><div class="test-stars"><span>★★★★★</span></div></div></div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Me hicieron los forros básicos a un precio muy accesible. La calidad es buena para el precio y la instalación fue rápida. Cuando tenga más presupuesto vuelvo por los premium.</p>
+      <div class="test-footer"><div class="test-avatar">LV</div><div><div class="test-name">Laura V.</div><div class="test-vehicle">Renault Logan · Forro Básico</div><div class="test-stars"><span>★★★★☆</span></div></div></div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-quote-mark">"</div>
+      <p class="test-text">Tapicería premium en mi Kia Sportage. El resultado fue de revista. El diseño quedó exactamente como lo pedí. Cada detalle reflejó mi estilo.</p>
+      <div class="test-footer"><div class="test-avatar">CM</div><div><div class="test-name">Carlos M.</div><div class="test-vehicle">Kia Sportage · Tapicería Premium</div><div class="test-stars"><span>★★★★★</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar" id="contacto">
+  <div class="contact-bar-title">¿LISTO PARA TRANSFORMAR TU CARRO?</div>
+  <p class="contact-bar-sub">Escríbenos ahora · Atención inmediata por WhatsApp</p>
+  <div class="contact-phones">
+    <a href="tel:3138332502" class="contact-phone-btn"><span>📞</span> 313 833 2502</a>
+    <a href="tel:3105819598" class="contact-phone-btn"><span>📞</span> 310 581 9598</a>
+    <a href="tel:3115287639" class="contact-phone-btn"><span>📞</span> 311 528 7639</a>
+    <a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20conocer%20sus%20servicios" class="hero-cta" target="_blank" style="margin-top:0">💬 WHATSAPP</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">CLEAN DETAILS</div>
+  <div class="footer-services">TAPICERÍA · SONIDO · LUJOS · POLARIZADOS · ELÉCTRICOS</div>
+  <div class="footer-copy">© 2025 Clean Details · Todos los derechos reservados · Hecho con ❤️ para los amantes del automóvil</div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/573138332502?text=Hola!%20Me%20interesa%20un%20servicio%20de%20Clean%20Details" class="wa-float" target="_blank" title="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.51L4 29l7.697-1.804A12.94 12.94 0 0016 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10a9.95 9.95 0 01-5.022-1.354l-.36-.215-4.568 1.072 1.105-4.447-.229-.374A9.953 9.953 0 016 15c0-5.523 4.477-10 10-10zm-3.586 5.5c-.208 0-.543.078-.826.392-.284.313-1.082 1.057-1.082 2.577s1.107 2.99 1.261 3.198c.155.209 2.177 3.322 5.278 4.527.737.318 1.312.508 1.76.65.74.235 1.414.202 1.946.123.593-.088 1.828-.748 2.087-1.47.258-.724.258-1.344.18-1.47-.077-.13-.285-.208-.594-.364-.31-.157-1.828-.902-2.112-1.004-.283-.103-.49-.156-.697.157-.206.312-.799.99-.978 1.194-.18.207-.36.234-.67.078-.31-.156-1.308-.482-2.491-1.537-.92-.82-1.541-1.835-1.722-2.145-.18-.31-.019-.477.135-.63.139-.138.31-.364.464-.546.155-.182.206-.312.31-.52.103-.208.051-.39-.026-.546-.078-.157-.698-1.682-.956-2.302-.252-.605-.508-.522-.698-.532l-.594-.01z"/></svg>
+</a>
+
+<script>
+const sliderState = {};
+
+function getState(id) {
+  if (!sliderState[id]) {
+    const total = document.querySelectorAll(`#slides-${id} .slide`).length;
+    sliderState[id] = { current: 0, total: total };
+  }
+  return sliderState[id];
+}
+
+function updateSlider(id) {
+  const state = getState(id);
+  const slides = document.getElementById('slides-' + id);
+
+  if (slides) {
+    slides.style.transform = `translateX(-${state.current * 100}%)`;
+  }
+
+  const dots = document.querySelectorAll(`#dots-${id} .dot`);
+  dots.forEach((d, i) => d.classList.toggle('active', i === state.current));
+}
+
+function slide(id, dir) {
+  const state = getState(id);
+  state.current = (state.current + dir + state.total) % state.total;
+  updateSlider(id);
+}
+
+function goSlide(id, idx) {
+  const state = getState(id);
+  state.current = idx;
+  updateSlider(id);
+}
+
+const sliderIds = [
+  'forro-basico',
+  'forro-estandar',
+  'forro-premium',
+  'tap-basico',
+  'tap-estandar',
+  'tap-premium',
+  'pol-basico',
+  'pol-nano',
+  'pol-ceramic'
+];
+
+sliderIds.forEach(id => {
+  setInterval(() => slide(id, 1), 4500 + Math.random() * 2000);
+});
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Video de portada: sin sonido, en bucle, pausa fuera de pantalla
+(function () {
+  const v = document.getElementById('heroVideo');
+  const hero = document.getElementById('inicio');
+  if (!v) return;
+  v.muted = true;
+  v.loop = true;
+  v.play().catch(() => {});
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => e.isIntersecting ? v.play().catch(() => {}) : v.pause());
+  }, { threshold: 0.1 }).observe(hero);
+})();
+</script>
+</body>
+</html>
